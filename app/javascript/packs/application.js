@@ -8,7 +8,6 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-import $ from "jquery"
 
 Rails.start()
 Turbolinks.start()
@@ -16,5 +15,7 @@ ActiveStorage.start()
 
 // once turbolinks load we enable the drop down
 $(document).on('turbolinks:load', function(){
-    $('.ui.dropdown').dropdown();
+    $('.message .close').on('click', function() {
+        $(this).closest('.message').transition('fade');
+  });
 })

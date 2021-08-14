@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController 
 
+    before_action :logged_in_redirect, only: [:new, :create]
+
     def new 
     end 
 
@@ -20,8 +22,16 @@ class SessionsController < ApplicationController
 
     def destroy 
         session.delete(:user_id)
-        flash[:notice] = "Logout successfully" 
+        flash[:success] = "Logout successfully" 
         redirect_to login_path
+    end 
+
+    private 
+
+    def logged_in_redirect 
+        if logged_in?
+            redirect_to root_path
+        end 
     end 
 
 end 

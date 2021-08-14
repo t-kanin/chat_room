@@ -12,14 +12,14 @@
                 </div>
             </div>
             <div class="extra content">
-                <form class="ui reply form">
+                <%= form_with model: @message, url: message_path, method: :post, class: "ui reply form" do |form| %>
                     <div class="field">
                         <div class="ui fluid icon input">
-                            <input type="text" placeholder = "Enter a message...">
-                            <i class="bordered inverted red edit icon"></i>
+                            <%= form.text_field :body, placeholder: "Please enter your message..."%>
+                            <%= form.button '<i class="bordered inverted red edit icon"></i>'.html_safe %>
                         </div>
                     </div>
-                </form>
+                <%end%>
             </div>
         </div>
     </div>
